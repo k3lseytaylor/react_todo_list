@@ -33,7 +33,24 @@ class Add extends Component{
 		const { form } = this.state;
 		console.log('Form Submitted', form);
 		this.props.add(form);
+
+		this.setState({
+			form:{
+				title:'',
+				description:''
+			}
+		});
 	}
+
+	deleteItem(index){
+		const { list } = this.state;
+		list.splice(index, 1);
+
+		this.setState({
+			list:[...list]
+		});
+	}
+
 	render(){
 		const { form } = this.state;
 		return(

@@ -23,13 +23,23 @@ class App extends Component{
 		});
 	}
 
+	deleteItem(index){
+		const { list } = this.state;
+		list.splice(index, 1);
+
+		this.setState({
+			list:[...list]
+		});
+	}
+
 
 	render(){
 		return(    
 			<div className="container">
     			<h1>Todo List</h1>
     			<Add add={(i)=>this.addTodo(i)}/>
-    			<List list={this.state.list}/>
+    			<List list={this.state.list} 
+    			onDelete ={(index)=> this.deleteItem(index)}/>
    			 </div>
     	);
 	}
